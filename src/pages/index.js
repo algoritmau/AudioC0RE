@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 
 export default function Home({ data }) {
   const locations = data.allContentfulLocation.edges;
@@ -9,6 +9,7 @@ export default function Home({ data }) {
       <h1>
         Hi! I am the <strong>Home</strong> page!
       </h1>
+      <Link to="/locations">Check our locations</Link>
       <ul>
         {locations.map(({ node: location }) => (
           <li key={location.id}>
