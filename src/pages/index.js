@@ -1,26 +1,8 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-export const query = graphql`
-  query {
-    allContentfulCity {
-      edges {
-        node {
-          id
-          name
-          description
-          location {
-            lon
-            lat
-          }
-        }
-      }
-    }
-  }
-`;
-
 export default function Home({ data }) {
-  const cities = data.allContentfulCity.edges;
+  const locations = data.allContentfulLocation.edges;
 
   return (
     <div>
@@ -28,13 +10,31 @@ export default function Home({ data }) {
         Hi! I am the <strong>Home</strong> page!
       </h1>
       <ul>
-        {cities.map(({ node: city }) => (
-          <li key={city.id}>
-            {city.name} - {city.description} -{" "}
-            {`${city.location.lon}, ${city.location.lat}`}
+        {locations.map(({ node: location }) => (
+          <li key={location.id}>
+            {location.city} - {location.description} -{" "}
+            {`${location.address.lat}, ${location.address.lon}`}
           </li>
         ))}
       </ul>
     </div>
   );
 }
+
+export const query = graphql`
+  query QueryLocations {
+    allContentfulLocation {
+      edges {
+        node {
+          id
+          city
+          description
+          address {
+            lat
+            lon
+          }
+        }
+      }
+    }
+  }
+`;
