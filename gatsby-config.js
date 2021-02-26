@@ -4,6 +4,7 @@ require("dotenv").config({
   (module.exports = {
     siteMetadata: {
       title: "AudioC0RE",
+      siteUrl: "https://github.com/spaceinvadev.io/AudioC0RE",
     },
     plugins: [
       {
